@@ -19,7 +19,6 @@ function buildWevueEntry () {
   const intallList = exportList.filter(name => !~uninstallComponents.indexOf(uppercamelcase(name)))
 
   const content = `${tips}
-import 'weui/dist/style/weui.min.css'
 ${importList.join('\n')}
 
 const version = '${version}'

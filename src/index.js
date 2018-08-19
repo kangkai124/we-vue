@@ -1,5 +1,4 @@
 // This file is auto gererated by build/bin/build-entry.js
-import 'weui/dist/style/weui.min.css'
 import Actionsheet from './components/actionsheet'
 import Badge from './components/badge'
 import Button from './components/button'
