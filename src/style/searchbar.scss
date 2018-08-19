@@ -9,10 +9,10 @@
   -webkit-text-size-adjust: 100%;
   align-items: center;
   &:before {
-    @include setTopLine(#D7D6DC);
+    @include set-top-line(#D7D6DC);
   }
   &:after {
-    @include setBottomLine(#D7D6DC);
+    @include set-bottom-line(#D7D6DC);
   }
   &.weui-search-bar_focusing {
     .weui-search-bar__cancel-btn {

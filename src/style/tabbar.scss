@@ -9,7 +9,7 @@
   background-color: #F7F7FA;
 
   &:before {
-    @include setTopLine(#C0BFC4);
+    @include set-top-line(#C0BFC4);
   }
 }
 
@@ -20,7 +20,7 @@
   font-size: 0;
   color: $weuiTextColorGray;
   text-align: center;
-  @include setTapColor();
+  @include set-tap-color();
 
   &.weui-bar__item_on {
     .weui-tabbar__icon,

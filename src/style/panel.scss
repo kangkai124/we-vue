@@ -10,10 +10,10 @@
   position: relative;
   overflow: hidden;
   &:before {
-    @include setTopLine($weuiLineColorLight);
+    @include set-top-line($weuiLineColorLight);
   }
   &:after {
-    @include setBottomLine($weuiLineColorLight);
+    @include set-bottom-line($weuiLineColorLight);
   }
 }
 
@@ -23,7 +23,7 @@
   font-size: 13px;
   position: relative;
   &:after {
-    @include setBottomLine($weuiLineColorLight);
+    @include set-bottom-line($weuiLineColorLight);
     left: 15px;
   }
 }

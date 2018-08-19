@@ -10,7 +10,7 @@ $pickerItemHeight: 34px;
   backface-visibility: hidden;
   transform: translate(0, 100%);
   //slide up animation
-  transition: transform @include 3s;
+  transition: transform 0.3s;
 }
 
 .weui-picker__hd {
@@ -21,7 +21,7 @@ $pickerItemHeight: 34px;
   text-align: center;
   font-size: 17px;
   &:after {
-    @include setBottomLine($weuiLineColorLight);
+    @include set-bottom-line($weuiLineColorLight);
   }
 }
 
@@ -77,10 +77,10 @@ $pickerItemHeight: 34px;
   top: 102px;
   z-index: 3;
   &:before {
-    @include setTopLine($weuiLineColorLight);
+    @include set-top-line($weuiLineColorLight);
   }
   &:after {
-    @include setBottomLine($weuiLineColorLight);
+    @include set-bottom-line($weuiLineColorLight);
   }
 }
 
