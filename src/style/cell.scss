@@ -11,11 +11,11 @@
   // onepx
   position: relative;
   &:before {
-    @include setTopLine($weuiCellBorderColor);
+    @include set-top-line($weuiCellBorderColor);
     z-index: 2;
   }
   &:after {
-    @include setBottomLine($weuiCellBorderColor);
+    @include set-bottom-line($weuiCellBorderColor);
     z-index: 2;
   }
 }
@@ -47,7 +47,7 @@
   display: flex;
   align-items: center;
   &:before {
-    @include setTopLine($weuiCellBorderColor);
+    @include set-top-line($weuiCellBorderColor);
     left: $weuiCellGapH;
     z-index: 2;
   }
