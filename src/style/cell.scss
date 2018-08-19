@@ -1,0 +1,171 @@
+@import "./base/fn";
+
+.weui-cells {
+  margin-top: $weuiCellsMarginTop;
+  background-color: $weuiCellBg;
+  line-height: $weuiCellLineHeight;
+  font-size: $weuiCellFontSize; //cell中间有效高度23px，跟客户端默认图标尺寸一致
+
+  overflow: hidden; //因为每个cell的border使用before元素left搞的，ie下伪元素的containing block估计跟标准不同，在cell上用oh不生效
+
+  // onepx
+  position: relative;
+  &:before {
+    @include setTopLine($weuiCellBorderColor);
+    z-index: 2;
+  }
+  &:after {
+    @include setBottomLine($weuiCellBorderColor);
+    z-index: 2;
+  }
+}
+
+.weui-cells__title {
+  margin-top: .77em; // 15px - 行高
+  margin-bottom: .3em; // 8px - 行高
+  padding-left: $weuiCellGapH;
+  padding-right: $weuiCellGapH;
+  color: $weuiTextColorGray;
+  font-size: $weuiCellTipsFontSize;
+
+  & + .weui-cells {
+    margin-top: 0;
+  }
+}
+
+.weui-cells__tips {
+  margin-top: .3em; // 8px - 行高
+  color: $weuiTextColorGray;
+  padding-left: $weuiCellGapH;
+  padding-right: $weuiCellGapH;
+  font-size: $weuiCellTipsFontSize;
+}
+
+.weui-cell {
+  padding: $weuiCellGapV $weuiCellGapH;
+  position: relative; //这个是为了兼容cells容器onepx方案被before挡住而做的
+  display: flex;
+  align-items: center;
+  &:before {
+    @include setTopLine($weuiCellBorderColor);
+    left: $weuiCellGapH;
+    z-index: 2;
+  }
+  &:first-child {
+    &:before {
+      display: none;
+    }
+  }
+}
+
+.weui-cell_primary {
+  align-items: flex-start;
+}
+
+.weui-cell__bd {
+  flex: 1;
+}
+
+.weui-cell__ft {
+  text-align: right;
+  color: $weuiTextColorGray;
+}
+
+.weui-cell_access {
+  @include set-tap-color();
+  color: inherit;
+  &:active {
+    background-color: #ECECEC;
+  }
+  .weui-cell__ft {
+    padding-right: 13px;
+    position: relative;
+    &:after {
+      content: " ";
+      @include set-arrow(right, 6px, #C8C8CD, 2px);
+      position: absolute;
+      top: 50%;
+      margin-top: -4px;
+      right: 2px;
+    }
+  }
+}
+
+.weui-cell_link {
+  color: $weuiLinkColorDefault;
+  font-size: 14px;
+
+  // 由于weui-cell:first-child的:before为隐藏，所以这里要重新显示出来
+  &:first-child {
+    &:before {
+      display: block;
+    }
+  }
+}
+
+.weui-check__label {
+  @include set-tap-color();
+  &:active {
+    background-color: #ECECEC;
+  }
+}
+
+.weui-check {
+  position: absolute;
+  left: -9999em;
+}
+
+.weui-cells_checkbox {
+  .weui-cell__hd {
+    padding-right: $weuiCellInnerGapH;
+  }
+  .weui-icon-checked {
+    &:before {
+      content: '\EA01';
+      color: #C9C9C9;
+      font-size: 23px;
+      display: block;
+    }
+  }
+}
+
+// method2 accessbility
+.weui-check {
+  // checkbox
+  .weui-cells_checkbox & {
+    &:checked {
+      & + .weui-icon-checked {
+        &:before {
+          content: '\EA06';
+          color: #09BB07;
+        }
+      }
+    }
+  }
+}
+
+// method2 accessbility
+.weui-cells_radio {
+  .weui-cell__ft {
+    padding-left: $weuiCellInnerGapH;
+  }
+}
+
+.weui-check {
+  // radio
+  .weui-cells_radio & {
+    & + .weui-icon-checked {
+      min-width: 16px;
+    }
+    &:checked {
+      & + .weui-icon-checked {
+        &:before {
+          display: block;
+          content: '\EA08';
+          color: #09BB07;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

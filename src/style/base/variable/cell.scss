@@ -8,13 +8,8 @@ $weuiCellFontSize: 17px;
 $weuiCellTipsFontSize: 14px;
 $weuiCellLabelWidth: 105px;
 
-// TODO unit 函数
-$weuiCellLineHeight: 20px;
-$weuiCellsMarginTop: 20px;
-
-// TODO unit 函数
-//$weuiCellLineHeight: unit(($weuiCellHeight - 2 * $weuiCellGapV) / $weuiCellFontSize); // 高度减去上下 padding 的行高
-//$weuiCellsMarginTop: unit(20 / $weuiCellFontSize, em);
+$weuiCellLineHeight: (($weuiCellHeight - 2 * $weuiCellGapV) / $weuiCellFontSize) + px; // 高度减去上下 padding 的行高
+$weuiCellsMarginTop: (20 / $weuiCellFontSize) + em;
 
 // weui switch
 $weuiSwitchHeight: 32px;

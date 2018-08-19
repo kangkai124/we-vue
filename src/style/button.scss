@@ -14,7 +14,7 @@
   color: $weuiBtnFontColor;
   line-height: unit($weuiBtnHeight/$weuiBtnFontSize);
   border-radius: $weuiBtnBorderRadius;
-  @include set-tab-color();
+  @include set-tap-color();
   overflow: hidden;
   &:after {
     content: " ";
