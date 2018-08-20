@@ -35,6 +35,9 @@ import '../src/style/icons.scss'
 import '../src/style/number-spinner.scss'
 import '../src/style/spinner.scss'
 import '../src/style/switch.scss'
+import '../src/style/input.scss'
+import '../src/style/textarea.scss'
+import '../src/style/radio.scss'
 
 Vue.config.productionTip = false
 Vue.config.devtools = true
