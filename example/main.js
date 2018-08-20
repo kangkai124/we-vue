@@ -17,6 +17,7 @@ import '../src/style/dialog.scss'
 import '../src/style/flex.scss'
 import '../src/style/footer.scss'
 import '../src/style/grid.scss'
+import '../src/style/group.scss'
 import '../src/style/loadmore.scss'
 import '../src/style/media-box.scss'
 import '../src/style/panel.scss'
@@ -26,6 +27,10 @@ import '../src/style/searchbar.scss'
 import '../src/style/slider.scss'
 import '../src/style/tabbar.scss'
 import '../src/style/toast.scss'
+import '../src/style/top-tips.scss'
+import '../src/style/swipe.scss'
+import '../src/style/header.scss'
+import '../src/style/popup.scss'
 
 Vue.config.productionTip = false
 Vue.config.devtools = true

@@ -18,9 +18,3 @@ export default create({
   }
 })
 </script>
-
-<style scoped lang="scss">
-  .weui-toptips {
-    display: block;
-  }
-</style>

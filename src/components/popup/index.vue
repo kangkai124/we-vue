@@ -58,28 +58,3 @@ export default create({
   }
 })
 </script>
-
-<style scoped lang="scss">
-  .wv {
-    &-modal {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background-color: rgba(0, 0, 0, 0.7);
-    }
-
-    &-overflow-hidden {
-      overflow: hidden !important;
-    }
-
-    &-popup {
-      position: fixed;
-      background-color: white;
-      width: 100%;
-      bottom: 0;
-      left: 0;
-    }
-  }
-</style>

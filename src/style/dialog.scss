@@ -14,13 +14,16 @@
   border-radius: 3px;
   overflow: hidden;
 }
+
 .weui-dialog__hd {
   padding: 1.3em $weuiDialogGapWidth .5em;
 }
+
 .weui-dialog__title {
   font-weight: 400;
   font-size: 18px;
 }
+
 .weui-dialog__bd {
   padding: 0 $weuiDialogGapWidth .8em;
   min-height: 40px;
@@ -29,11 +32,12 @@
   word-wrap: break-word;
   word-break: break-all;
   color: $weuiTextColorGray;
-  &:first-child{
-    padding:2.7em 20px 1.7em;
-    color:#353535;
+  &:first-child {
+    padding: 2.7em 20px 1.7em;
+    color: #353535;
   }
 }
+
 .weui-dialog__ft {
   position: relative;
   line-height: 48px;
@@ -44,6 +48,7 @@
     @include set-top-line($weuiDialogLineColor);
   }
 }
+
 .weui-dialog__btn {
   display: block;
   flex: 1;
@@ -65,59 +70,61 @@
     }
   }
 }
+
 .weui-dialog__btn_default {
   color: #353535;
 }
+
 .weui-dialog__btn_primary {
   color: #0BB20C;
 }
 
-.weui-skin_android{
+.weui-skin_android {
   .weui-dialog {
     text-align: left;
     box-shadow: 0 6px 30px 0 rgba(0, 0, 0, .1);
   }
-  .weui-dialog__title{
+  .weui-dialog__title {
     font-size: 21px;
   }
-  .weui-dialog__hd{
+  .weui-dialog__hd {
     text-align: left;
   }
-  .weui-dialog__bd{
-    color:$weuiTextColorGray;
-    padding:.25em $weuiDialogGapWidth 2em;
+  .weui-dialog__bd {
+    color: $weuiTextColorGray;
+    padding: .25em $weuiDialogGapWidth 2em;
     font-size: 17px;
     text-align: left;
-    &:first-child{
-      padding:1.6em $weuiDialogGapWidth 2em;
-      color:#353535;
+    &:first-child {
+      padding: 1.6em $weuiDialogGapWidth 2em;
+      color: #353535;
     }
   }
-  .weui-dialog__ft{
+  .weui-dialog__ft {
     display: block;
     text-align: right;
     line-height: 42px;
     font-size: 16px;
-    padding:0 $weuiDialogGapWidth .7em;
-    &:after{
+    padding: 0 $weuiDialogGapWidth .7em;
+    &:after {
       display: none;
     }
   }
-  .weui-dialog__btn{
+  .weui-dialog__btn {
     display: inline-block;
     vertical-align: top;
-    padding:0 .8em;
-    &:after{
+    padding: 0 .8em;
+    &:after {
       display: none;
     }
 
-    &:active{
-      background-color: rgba(0,0,0,.06);
+    &:active {
+      background-color: rgba(0, 0, 0, .06);
     }
-    &:visited{
-      background-color: rgba(0,0,0,.06);
+    &:visited {
+      background-color: rgba(0, 0, 0, .06);
     }
-    &:last-child{
+    &:last-child {
       margin-right: -.8em;
     }
   }
