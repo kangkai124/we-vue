@@ -1,6 +1,7 @@
 @import "./base/fn";
 
 $pickerItemHeight: 34px;
+
 .weui-picker {
   position: fixed;
   width: 100%;
@@ -8,7 +9,7 @@ $pickerItemHeight: 34px;
   bottom: 0;
   z-index: 5000;
   backface-visibility: hidden;
-  transform: translate(0, 100%);
+  transform: none;
   //slide up animation
   transition: transform 0.3s;
 }
@@ -104,4 +105,8 @@ $pickerItemHeight: 34px;
 
 .weui-picker__item_disabled {
   color: $weuiTextColorGray;
+}
+
+.wv-picker-column-divider {
+  transform: translate3d(0, 106px, 0);
 }

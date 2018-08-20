@@ -113,24 +113,3 @@ export default create({
   }
 })
 </script>
-
-<style scoped lang="scss">
-  .weui-search-bar__label {
-    transform-origin: 0px 0px 0px;
-    opacity: 1;
-    transform: scale(1, 1);
-  }
-
-  .weui-search-bar__cancel-btn {
-    display: block;
-  }
-
-  .searchbar-result {
-    display: block;
-    transform-origin: 0px 0px 0px;
-    opacity: 1;
-    transform: scale(1, 1);
-    margin-top: 0;
-    font-size: 14px;
-  }
-</style>

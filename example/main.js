@@ -31,6 +31,9 @@ import '../src/style/top-tips.scss'
 import '../src/style/swipe.scss'
 import '../src/style/header.scss'
 import '../src/style/popup.scss'
+import '../src/style/icons.scss'
+import '../src/style/number-spinner.scss'
+import '../src/style/spinner.scss'
 
 Vue.config.productionTip = false
 Vue.config.devtools = true

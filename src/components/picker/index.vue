@@ -200,9 +200,3 @@ export default create({
   }
 })
 </script>
-
-<style scoped lang="scss">
-  .weui-picker {
-    transform: none;
-  }
-</style>
