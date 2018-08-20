@@ -53,6 +53,3 @@ export default create({
   }
 })
 </script>
-
-<style scoped lang="scss">
-</style>

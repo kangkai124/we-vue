@@ -7,6 +7,26 @@ import router from './router'
 import QRCode from 'qrcode'
 import store from './store'
 
+// TODO
+import '../src/style/actionsheet.scss'
+import '../src/style/badge.scss'
+import '../src/style/button.scss'
+import '../src/style/cell.scss'
+import '../src/style/cell-swipe.scss'
+import '../src/style/dialog.scss'
+import '../src/style/flex.scss'
+import '../src/style/footer.scss'
+import '../src/style/grid.scss'
+import '../src/style/loadmore.scss'
+import '../src/style/media-box.scss'
+import '../src/style/panel.scss'
+import '../src/style/picker.scss'
+import '../src/style/progress.scss'
+import '../src/style/searchbar.scss'
+import '../src/style/slider.scss'
+import '../src/style/tabbar.scss'
+import '../src/style/toast.scss'
+
 Vue.config.productionTip = false
 Vue.config.devtools = true
 

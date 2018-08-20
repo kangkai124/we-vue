@@ -23,8 +23,6 @@ import Input from './components/input'
 import Lazyload from './components/lazyload'
 import Loadmore from './components/loadmore'
 import MediaBox from './components/media-box'
-import Navbar from './components/navbar'
-import NavbarItem from './components/navbar-item'
 import NumberSpinner from './components/number-spinner'
 import Panel from './components/panel'
 import Picker from './components/picker'
@@ -68,8 +66,6 @@ const components = [
   Input,
   Loadmore,
   MediaBox,
-  Navbar,
-  NavbarItem,
   NumberSpinner,
   Panel,
   Picker,
@@ -138,8 +134,6 @@ export {
   Lazyload,
   Loadmore,
   MediaBox,
-  Navbar,
-  NavbarItem,
   NumberSpinner,
   Panel,
   Picker,
