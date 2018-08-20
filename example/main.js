@@ -34,6 +34,7 @@ import '../src/style/popup.scss'
 import '../src/style/icons.scss'
 import '../src/style/number-spinner.scss'
 import '../src/style/spinner.scss'
+import '../src/style/switch.scss'
 
 Vue.config.productionTip = false
 Vue.config.devtools = true
