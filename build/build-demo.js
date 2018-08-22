@@ -7,7 +7,7 @@ const rm = require('rimraf')
 const path = require('path')
 const chalk = require('chalk')
 const webpack = require('webpack')
-const webpackConfig = require('./webpack.demo.conf')
+const webpackConfig = require('./webpack.demo')
 
 rm(path.join(__dirname, '../dist/*'), err => {
   if (err) throw err
