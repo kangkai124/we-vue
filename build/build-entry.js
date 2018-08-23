@@ -1,8 +1,8 @@
-const Components = require('./components-helpers').getComponents()
-const fs = require('fs')
-const uppercamelcase = require('uppercamelcase')
+const fs = require('fs-extra')
 const path = require('path')
-const version = process.env.VERSION || require('../../package.json').version
+const uppercamelcase = require('uppercamelcase')
+const Components = require('./get-components')()
+const version = process.env.VERSION || require('../package.json').version
 const tips = '// This file is auto gererated by build/bin/build-entry.js'
 
 function buildWevueEntry () {

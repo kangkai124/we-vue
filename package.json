@@ -28,21 +28,20 @@
   ],
   "scripts": {
     "bootstrap": "yarn || num i",
+    "lint": "eslint --ext .js,.vue src example docs test/unit/specs",
+    "dev": "npm run build:entry && webpack-dev-server --inline --config build/webpack.dev.js",
+    "dev:docs": "webpack-dev-server --inline --config build/webpack.docsdev.js",
     "build": "node build/build.js",
     "build:components": "node build/build-component.js",
     "build:demo": "node build/build-demo.js",
     "build:docs": "node build/build-docs.js",
     "build:entry": "node build/bin/build-entry.js",
     "build:release": "npm run build:entry && npm run build:component && npm run build",
-    "dev": "npm run build:entry && webpack-dev-server --inline --config build/webpack.dev.js",
-    "dev:docs": "webpack-dev-server --inline --config build/webpack.docsdev.js",
-    "lint": "eslint --ext .js,.vue src example docs test/unit/specs",
-    "unit": "jest --config=test/unit/jest.conf.js --coverage --maxWorkers=5",
-    "test": "npm run unit",
+    "test": "jest --config=test/unit/jest.conf.js --coverage --maxWorkers=5",
     "test:watch": "jest --config=test/unit/jest.conf.js --coverage --watchAll",
     "test:ci": "jest --config=test/unit/jest.conf.js --coverage --maxWorkers=1",
     "coverage": "opener test/unit/coverage/lcov-report/index.html",
-    "pub": "node build/release.js"
+    "release": "node build/release.js"
   },
   "dependencies": {
     "vue-lazyload": "^1.2.0"
