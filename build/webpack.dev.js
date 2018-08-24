@@ -1,7 +1,6 @@
 'use strict'
 const utils = require('./utils')
 const webpack = require('webpack')
-const config = require('../config')
 const merge = require('webpack-merge')
 const path = require('path')
 const baseWebpackConfig = require('./webpack.base')
@@ -20,17 +19,15 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     example: './example/main.js'
   },
   output: {
-    path: config.build.assetsRoot,
+    path: path.resolve(__dirname, '../dist'),
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath
-      : config.dev.assetsPublicPath
+    publicPath: '/'
   },
   module: {
-    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
+    rules: utils.styleLoaders({ sourceMap: true, usePostCSS: true })
   },
   // cheap-module-eval-source-map is faster for development
-  devtool: config.dev.devtool,
+  devtool: 'cheap-module-eval-source-map',
 
   // these devServer options should be customized in /config/index.js
   devServer: {
@@ -39,17 +36,15 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     hot: true,
     contentBase: false, // since we use CopyWebpackPlugin.
     compress: true,
-    host: HOST || config.dev.host,
-    port: PORT || config.dev.port,
-    open: config.dev.autoOpenBrowser,
-    overlay: config.dev.errorOverlay
-      ? { warnings: false, errors: true }
-      : false,
-    publicPath: config.dev.assetsPublicPath,
-    proxy: config.dev.proxyTable,
+    host: HOST || 'localhost',
+    port: PORT || 8080,
+    open: true,
+    overlay: { warnings: false, errors: true },
+    publicPath: '/',
+    proxy: {},
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
-      poll: config.dev.poll,
+      poll: false,
     }
   },
   plugins: [
@@ -74,7 +69,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 })
 
 module.exports = new Promise((resolve, reject) => {
-  portfinder.basePort = process.env.PORT || config.dev.port
+  portfinder.basePort = process.env.PORT || 8080
   portfinder.getPort((err, port) => {
     if (err) {
       reject(err)
@@ -89,7 +84,7 @@ module.exports = new Promise((resolve, reject) => {
         compilationSuccessInfo: {
           messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
         },
-        onErrors: config.dev.notifyOnErrors
+        onErrors: true,
         ? utils.createNotifierCallback()
         : undefined
       }))

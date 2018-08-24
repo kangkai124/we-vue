@@ -1,7 +1,6 @@
 'use strict'
 const path = require('path')
 const utils = require('./utils')
-const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 const { VueLoaderPlugin } = require('vue-loader')
 const WebpackBar = require('webpackbar')
@@ -10,21 +9,11 @@ function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
-const createLintingRule = () => ({
-  test: /\.(js|vue)$/,
-  loader: 'eslint-loader',
-  enforce: 'pre',
-  include: [resolve('src'), resolve('test'), resolve('example'), resolve('docs')],
-  options: {
-    formatter: require('eslint-friendly-formatter'),
-    emitWarning: !config.dev.showEslintErrorsInOverlay
-  }
-})
-
 module.exports = {
   context: path.resolve(__dirname, '../'),
+  mode: 'development',
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.css', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
@@ -32,7 +21,16 @@ module.exports = {
   },
   module: {
     rules: [
-      ...(config.dev.useEslint ? [createLintingRule()] : []),
+      {
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',
+        include: [resolve('src'), resolve('test'), resolve('example'), resolve('docs')],
+        options: {
+          formatter: require('eslint-friendly-formatter'),
+          emitWarning: true
+        }
+      },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -40,9 +38,16 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        // exclude: /node_modules/,
-        loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('example'), resolve('docs'), resolve('node_modules/webpack-dev-server/client')]
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.(css|postcss)$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader'
+        ]
       },
       {
         test: /\.md$/,
