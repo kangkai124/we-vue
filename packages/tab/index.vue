@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import create from '../../utils/create'
-import findParent from '../../mixins/find-parent'
+import create from '../utils/create'
+import findParent from '../mixins/find-parent'
 
 export default create({
   name: 'tab',

@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import PopupMixin from '../../mixins/popup'
-import { create } from '../../utils'
+import PopupMixin from '../mixins/popup'
+import { create } from '../utils'
 
 export default create({
   name: 'popup',

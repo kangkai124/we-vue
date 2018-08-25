@@ -43,7 +43,7 @@
 
 <script>
 import PickerColumn from './picker-column'
-import { create } from '../../utils'
+import { create } from '../utils'
 
 // height of th option item
 const ITEM_HEIGHT = 34

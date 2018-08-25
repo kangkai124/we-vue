@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import RouterLink from '../../mixins/router-link'
-import { create } from '../../utils'
+import RouterLink from '../mixins/router-link'
+import { create } from '../utils'
 
 export default create({
   name: 'footer-link',

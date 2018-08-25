@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import '../src/style/base.scss' // TODO
+import '../packages/style/base.scss' // TODO
 
 Vue.use(Vuex)
 

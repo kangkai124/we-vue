@@ -1,22 +1,23 @@
 'use strict'
 const path = require('path')
 const utils = require('./utils')
-const config = require('../config')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-const componentsEntry = require('./bin/components-helpers').getComponentsEntry()
+const components = require('./get-components')()
 const safeParser = require('postcss-safe-parser')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
-const env = process.env.NODE_ENV === 'testing'
-  ? require('../config/test.env')
-  : config.build.env
+
+let componentEntries = {}
+components.forEach((component) => {
+  componentEntries[component] = `./packages/${component}/`
+})
 
 const webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
-  entry: componentsEntry,
+  entry: componentEntries,
   module: {
     rules: utils.styleLoaders({
       sourceMap: false,
@@ -27,7 +28,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: path.resolve(__dirname, '../lib'),
     filename: '[name]/index.js',
-    libraryTarget: 'umd'
+    libraryTarget: 'commonjs2'
   },
   externals: {
     vue: {

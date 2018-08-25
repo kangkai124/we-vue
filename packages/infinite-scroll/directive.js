@@ -1,5 +1,5 @@
-import Utils from '../../utils/scroll'
-import { on, off } from '../../utils/event'
+import Utils from '../utils/scroll'
+import { on, off } from '../utils/event'
 
 const CONTEXT = '@@InfiniteScroll'
 const DISTANCE = 300

@@ -28,7 +28,7 @@
 
 <script>
 import Cell from '../cell/index'
-import { create, getTouch } from '../../utils'
+import { create, getTouch } from '../utils'
 
 // 开关的行程
 const THUMB_STROKE = 20

@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { create, getTouch } from '../../utils'
+import { create, getTouch } from '../utils'
 
 export default create({
   name: 'swipe',

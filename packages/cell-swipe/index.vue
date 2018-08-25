@@ -38,10 +38,10 @@
 </template>
 
 <script>
-import { create, getTouch } from '../../utils'
+import { create, getTouch } from '../utils'
 import Cell from '../cell/index'
-import RouterLink from '../../mixins/router-link'
-import Clickoutside from '../../utils/clickoutside'
+import RouterLink from '../mixins/router-link'
+import Clickoutside from '../utils/clickoutside'
 
 export default create({
   name: 'cell-swipe',

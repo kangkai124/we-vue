@@ -27,8 +27,8 @@
 </template>
 
 <script>
-import { create } from '../../utils'
-import PopupMixin from '../../mixins/popup'
+import { create } from '../utils'
+import PopupMixin from '../mixins/popup'
 
 const CONFIRM_TEXT = '确定'
 const CANCEL_TEXT = '取消'

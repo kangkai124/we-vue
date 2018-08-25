@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { create } from '../../utils'
+import { create } from '../utils'
 
 export default create({
   name: 'group',

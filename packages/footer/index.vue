@@ -13,7 +13,7 @@
 
 <script>
 import FooterLink from './footer-link.vue'
-import { create } from '../../utils'
+import { create } from '../utils'
 
 export default create({
   name: 'footer',

@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import { create } from '../../utils'
-import RouterLink from '../../mixins/router-link'
+import { create } from '../utils'
+import RouterLink from '../mixins/router-link'
 
 export default create({
   name: 'cell',
