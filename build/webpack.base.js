@@ -41,14 +41,15 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader'
       },
-      {
-        test: /\.(css|postcss)$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'postcss-loader'
-        ]
-      },
+      // TODO
+      // {
+      //   test: /\.(css|postcss)$/,
+      //   use: [
+      //     'style-loader',
+      //     'css-loader',
+      //     'postcss-loader'
+      //   ]
+      // },
       {
         test: /\.md$/,
         use: [

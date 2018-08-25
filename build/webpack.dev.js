@@ -7,6 +7,10 @@ const baseWebpackConfig = require('./webpack.base')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const safeParser = require('postcss-safe-parser')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const portfinder = require('portfinder')
 const myLocalIp = require('my-local-ip')
 
@@ -14,12 +18,10 @@ const HOST = myLocalIp()
 const PORT = process.env.PORT && Number(process.env.PORT)
 
 const devWebpackConfig = merge(baseWebpackConfig, {
-  mode: 'development',
-  entry: {
-    example: './demo/main.js'
-  },
+  mode: process.env.NODE_ENV,
+  entry: './demo/main.js',
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, '../demo/dist'),
     filename: '[name].js',
     publicPath: '/'
   },
@@ -27,8 +29,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     rules: utils.styleLoaders({ sourceMap: true, usePostCSS: true })
   },
   // cheap-module-eval-source-map is faster for development
-  devtool: 'cheap-module-eval-source-map',
-
+  devtool: process.env.NODE_ENV === 'dev' ? 'cheap-module-eval-source-map' : '#source-map',
   // these devServer options should be customized in /config/index.js
   devServer: {
     clientLogLevel: 'warning',
@@ -61,10 +62,30 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../demo/static'),
-        to: path.resolve(__dirname, '../dist/static'),
+        to: path.resolve(__dirname, '../demo/dist/static'),
         ignore: ['.*']
       }
-    ])
+    ]),
+    new UglifyJsPlugin({
+      uglifyOptions: {
+        compress: {
+          warnings: false
+        }
+      },
+      sourceMap: false,
+      parallel: true
+    }),
+    // extract css into its own file
+    new MiniCssExtractPlugin({
+      filename: utils.assetsPath('css/[name].[contenthash].css')
+    }),
+    // Compress extracted CSS. We are using this plugin so that possible
+    // duplicated CSS from different components can be deduped.
+    new OptimizeCSSPlugin({
+      cssProcessorOptions: {
+        parser: safeParser
+      }
+    }),
   ]
 })
 
@@ -91,3 +112,5 @@ module.exports = new Promise((resolve, reject) => {
     }
   })
 })
+
+// module.exports = webpackConfig

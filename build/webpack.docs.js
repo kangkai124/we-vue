@@ -4,32 +4,33 @@ const webpack = require('webpack')
 const config = require('../config')
 const merge = require('webpack-merge')
 const path = require('path')
-const baseWebpackConfig = require('./webpack.base')
+const baseConfig = require('./webpack.base')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const safeParser = require('postcss-safe-parser')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
-const devWebpackConfig = merge(baseWebpackConfig, {
-  mode: 'development',
-  entry: {
-    docs: './docs/main.js'
-  },
+const devWebpackConfig = merge(baseConfig, {
+  mode: process.env.NODE_ENV,
+  entry: './docs/main.js',
   output: {
-    path: path.resolve(__dirname, '../docs-dist'),
-    filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath
-      : config.dev.assetsPublicPath
+    path: path.resolve(__dirname, '../docs/dist'),
+    filename: process.env.NODE_ENV === 'development' ? '[name].js' : path.posix.join('static', 'js/[name].[hash].js'),
+    chunkFilename: process.env.NODE_ENV === 'development' ? '[name].js' : path.posix.join('static', 'js/[name].[hash].js'),
+    publicPath: '/'
   },
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
   },
   // cheap-module-eval-source-map is faster for development
-  devtool: config.dev.devtool,
+  devtool: process.env.NODE_ENV === 'dev' ? 'cheap-module-eval-source-map' : '#source-map',
 
   // these devServer options should be customized in /config/index.js
   devServer: {
@@ -38,17 +39,15 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     hot: true,
     contentBase: false, // since we use CopyWebpackPlugin.
     compress: true,
-    host: HOST || config.dev.host,
-    port: PORT || config.dev.port,
-    open: config.dev.autoOpenBrowser,
-    overlay: config.dev.errorOverlay
-      ? { warnings: false, errors: true }
-      : false,
-    publicPath: config.dev.assetsPublicPath,
-    proxy: config.dev.proxyTable,
+    host: HOST || 'localhost',
+    port: PORT || 8080,
+    open: false,
+    overlay: { warnings: false, errors: true },
+    publicPath: '/',
+    proxy: {},
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
-      poll: config.dev.poll,
+      poll: false,
     }
   },
   plugins: [
@@ -65,10 +64,30 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../docs/static'),
-        to: path.resolve(__dirname, '../docs-dist/static'),
+        to: path.resolve(__dirname, '../docs/dist/static'),
         ignore: ['.*']
       }
-    ])
+    ]),
+    new UglifyJsPlugin({
+      uglifyOptions: {
+        compress: {
+          warnings: false
+        }
+      },
+      sourceMap: false,
+      parallel: true
+    }),
+    // extract css into its own file
+    new MiniCssExtractPlugin({
+      filename: utils.assetsPath('css/[name].[contenthash].css')
+    }),
+    // Compress extracted CSS. We are using this plugin so that possible
+    // duplicated CSS from different components can be deduped.
+    new OptimizeCSSPlugin({
+      cssProcessorOptions: {
+        parser: safeParser
+      }
+    }),
   ]
 })
 

@@ -2,7 +2,7 @@
 const path = require('path')
 const utils = require('./utils')
 const merge = require('webpack-merge')
-const baseWebpackConfig = require('./webpack.base')
+const baseConfig = require('./webpack.base')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const components = require('./get-components')()
@@ -15,7 +15,7 @@ components.forEach((component) => {
   componentEntries[component] = `./packages/${component}/`
 })
 
-const webpackConfig = merge(baseWebpackConfig, {
+const webpackConfig = merge(baseConfig, {
   mode: 'production',
   entry: componentEntries,
   module: {
