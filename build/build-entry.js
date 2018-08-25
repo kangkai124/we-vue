@@ -14,7 +14,7 @@ function buildWevueEntry () {
     'TopTips'
   ]
 
-  const importList = Components.map(name => `import ${uppercamelcase(name)} from './components/${name}'`)
+  const importList = Components.map(name => `import ${uppercamelcase(name)} from './${name}'`)
   const exportList = Components.map(name => `${uppercamelcase(name)}`)
   const intallList = exportList.filter(name => !~uninstallComponents.indexOf(uppercamelcase(name)))
 
@@ -59,10 +59,8 @@ export default {
   version
 }
 `
-  const OUTPUT_PATH = path.join(__dirname, '../../src/index.js')
 
-  fs.writeFileSync(OUTPUT_PATH, content)
-  console.log('[build entry] DONE:', OUTPUT_PATH)
+  fs.writeFileSync(path.join(__dirname, '../packages/index.js'), content)
 }
 
 buildWevueEntry()
