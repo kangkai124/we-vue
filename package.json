@@ -35,7 +35,7 @@
     "build:components": "node build/build-component.js",
     "build:demo": "node build/build-demo.js",
     "build:docs": "node build/build-docs.js",
-    "build:entry": "node build/bin/build-entry.js",
+    "build:entry": "node build/build-entry.js",
     "build:release": "npm run build:entry && npm run build:component && npm run build",
     "test": "jest --config=test/unit/jest.conf.js --coverage --maxWorkers=5",
     "test:watch": "jest --config=test/unit/jest.conf.js --coverage --watchAll",

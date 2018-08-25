@@ -2,13 +2,15 @@
 node_modules/
 /dist/
 /docs-dist/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+*.log*
 /test/unit/coverage/
+es
+lib
+package-lock.json
 
 # Editor directories and files
 .idea
+.vscode
 *.suo
 *.ntvs*
 *.njsproj
