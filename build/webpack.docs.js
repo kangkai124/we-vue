@@ -1,7 +1,6 @@
 'use strict'
 const utils = require('./utils')
 const webpack = require('webpack')
-const config = require('../config')
 const merge = require('webpack-merge')
 const path = require('path')
 const baseConfig = require('./webpack.base')
@@ -27,7 +26,7 @@ const devWebpackConfig = merge(baseConfig, {
     publicPath: '/'
   },
   module: {
-    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
+    rules: utils.styleLoaders({ sourceMap: false, usePostCSS: true })
   },
   // cheap-module-eval-source-map is faster for development
   devtool: process.env.NODE_ENV === 'dev' ? 'cheap-module-eval-source-map' : '#source-map',
@@ -92,7 +91,7 @@ const devWebpackConfig = merge(baseConfig, {
 })
 
 module.exports = new Promise((resolve, reject) => {
-  portfinder.basePort = process.env.PORT || config.dev.port
+  portfinder.basePort = process.env.PORT || 8080
   portfinder.getPort((err, port) => {
     if (err) {
       reject(err)
@@ -107,9 +106,7 @@ module.exports = new Promise((resolve, reject) => {
         compilationSuccessInfo: {
           messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
         },
-        onErrors: config.dev.notifyOnErrors
-        ? utils.createNotifierCallback()
-        : undefined
+        onErrors: utils.createNotifierCallback()
       }))
 
       resolve(devWebpackConfig)
