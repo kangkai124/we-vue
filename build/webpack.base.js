@@ -4,7 +4,6 @@ const utils = require('./utils')
 const vueLoaderConfig = require('./vue-loader.conf')
 const { VueLoaderPlugin } = require('vue-loader')
 const WebpackBar = require('webpackbar')
-const VueMarkdownLoader = require('@tianyong90/vue-markdown-loader')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
