@@ -98,9 +98,9 @@
   dependencies:
     any-observable "^0.3.0"
 
-"@tianyong90/vue-markdown-loader@https://github.com/tianyong90/vue-markdown-loader.git":
+"@tianyong90/vue-markdown-loader@^0.0.1":
   version "0.0.1"
-  resolved "https://github.com/tianyong90/vue-markdown-loader.git#49d427b72d1534170ed6f7d646ee140fbf6f59d9"
+  resolved "https://registry.yarnpkg.com/@tianyong90/vue-markdown-loader/-/vue-markdown-loader-0.0.1.tgz#c5cf65291d7a739813aa315c820b3f86fea1ebc7"
   dependencies:
     hash-sum "^1.0.2"
     highlight.js "^9.12.0"
