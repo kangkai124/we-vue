@@ -10,6 +10,19 @@
   ],
   "plugins": ["transform-runtime"],
   "env": {
+    "commonjs": {
+      "presets": [
+        "stage-0",
+        [
+          "env",
+          {
+            "modules": "commonjs",
+            "loose": true,
+            "exclude": ["transform-es2015-typeof-symbol"]
+          }
+        ]
+      ]
+    },
     "test": {
       "presets": ["env", "stage-2"],
       "plugins": ["transform-es2015-modules-commonjs", "dynamic-import-node"]

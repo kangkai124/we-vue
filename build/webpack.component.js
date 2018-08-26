@@ -38,19 +38,20 @@ const webpackConfig = merge(baseConfig, {
       amd: 'vue'
     }
   },
+  performance: false,
   optimization: {
-
+    minimize: false
   },
   plugins: [
-    new UglifyJsPlugin({
-      uglifyOptions: {
-        compress: {
-          warnings: false
-        }
-      },
-      sourceMap: false,
-      parallel: true
-    }),
+    // new UglifyJsPlugin({
+    //   uglifyOptions: {
+    //     compress: {
+    //       warnings: false
+    //     }
+    //   },
+    //   sourceMap: false,
+    //   parallel: true
+    // }),
     // extract css into its own file
     new MiniCssExtractPlugin({
       filename: '[name]/style.css'
