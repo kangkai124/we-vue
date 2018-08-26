@@ -3,7 +3,7 @@ const utils = require('./utils')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const path = require('path')
-const baseWebpackConfig = require('./webpack.base')
+const baseConfig = require('./webpack.base')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
@@ -12,12 +12,13 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const safeParser = require('postcss-safe-parser')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const portfinder = require('portfinder')
-const myLocalIp = require('my-local-ip')
 
-const HOST = myLocalIp()
-const PORT = process.env.PORT && Number(process.env.PORT)
+const isProduction = process.env.NODE_ENV === 'production'
 
-const devWebpackConfig = merge(baseWebpackConfig, {
+// load configs from .env file
+require('dotenv').config()
+
+const devWebpackConfig = merge(baseConfig, {
   mode: process.env.NODE_ENV,
   entry: './demo/main.js',
   output: {
@@ -37,9 +38,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     hot: true,
     contentBase: false, // since we use CopyWebpackPlugin.
     compress: true,
-    host: HOST || 'localhost',
-    port: PORT || 8080,
-    open: true,
+    host: process.env.LOCAL_HOST || 'localhost',
+    port: (process.env.PORT && Number(process.env.PORT)) || 8080,
+    open: false,
     overlay: { warnings: false, errors: true },
     publicPath: '/',
     proxy: {},
@@ -66,6 +67,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         ignore: ['.*']
       }
     ]),
+    // todo 只在 production 中使用的插件
     new UglifyJsPlugin({
       uglifyOptions: {
         compress: {
@@ -85,9 +87,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       cssProcessorOptions: {
         parser: safeParser
       }
-    }),
+    })
   ]
 })
+
+
 
 module.exports = new Promise((resolve, reject) => {
   portfinder.basePort = process.env.PORT || 8080

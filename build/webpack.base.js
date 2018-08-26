@@ -4,6 +4,7 @@ const utils = require('./utils')
 const vueLoaderConfig = require('./vue-loader.conf')
 const { VueLoaderPlugin } = require('vue-loader')
 const WebpackBar = require('webpackbar')
+const Dotenv = require('dotenv-webpack')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -110,6 +111,7 @@ module.exports = {
   },
   plugins: [
     new VueLoaderPlugin(),
+    new Dotenv(),
     new WebpackBar()
   ]
 }

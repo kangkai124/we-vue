@@ -1,5 +1,3 @@
-const components = require('./get-components')()
+const config = require('dotenv').config()
 
-
-
-console.log(components)
+console.log(config)
