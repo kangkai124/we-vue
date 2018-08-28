@@ -15,4 +15,5 @@ const source = fs.readFileSync(path.resolve(__dirname, '../packages/actionsheet/
 
 let res = compiler(source, {})
 
-console.log(res)
+fs.outputFileSync(path.resolve(__dirname, '../es/actionsheet/indexxx.js'), res.js)
+fs.outputFileSync(path.resolve(__dirname, '../es/actionsheet/indexxx.css'), res.css)
