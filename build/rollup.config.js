@@ -20,17 +20,19 @@ let externals = components.map(component => {
 console.log(externals)
 
 export default {
-  input: 'packages/index.js',
+  input: 'packages/actionsheet/index.vue',
   output: {
-    format: 'esm',
-    file: 'haha.js'
+    format: 'es',
+    file: 'es/actionsheet/index.js'
   },
   external: [
     ...externals,
     'vue'
   ],
   plugins: [
-    css(),
+    css({
+      output: 'es/actionsheet/style/index.css'
+    }),
     vue({
       css: false
     }),

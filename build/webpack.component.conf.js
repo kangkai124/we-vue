@@ -27,7 +27,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: path.resolve(__dirname, '../lib'),
     filename: '[name]/index.js',
-    libraryTarget: 'commonjs-module'
+    libraryTarget: 'commonjs'
   },
   externals: {
     vue: {
