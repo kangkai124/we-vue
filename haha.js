@@ -1,3 +1,4 @@
+import _extends from 'babel-runtime/helpers/extends';
 import Actionsheet from './actionsheet/index.vue';
 export { default as Actionsheet } from './actionsheet/index.vue';
 import Badge from './badge/index.vue';
@@ -85,61 +86,21 @@ export { default as Toast } from './toast/index.js';
 import TopTips from './top-tips/index.js';
 export { default as TopTips } from './top-tips/index.js';
 
-// This file is auto gererated by build/bin/build-entry.js
+var version = '2.2.5';
+var components = [Actionsheet, Badge, Button, Cell, CellSwipe, CellSwipeButton, Checklist, Circle, DatetimePicker, Flex, FlexItem, Footer, FormPreview, Grid, GridItem, Group, Header, Icon, Input, Loadmore, MediaBox, NumberSpinner, Panel, Picker, Popup, Progress, Radio, SearchBar, Slider, Spinner, Swipe, SwipeItem, Switch, Tab, Tabbar, TabbarItem, Tabs, Textarea];
 
-const version = '2.2.5';
-const components = [
-  Actionsheet,
-  Badge,
-  Button,
-  Cell,
-  CellSwipe,
-  CellSwipeButton,
-  Checklist,
-  Circle,
-  DatetimePicker,
-  Flex,
-  FlexItem,
-  Footer,
-  FormPreview,
-  Grid,
-  GridItem,
-  Group,
-  Header,
-  Icon,
-  Input,
-  Loadmore,
-  MediaBox,
-  NumberSpinner,
-  Panel,
-  Picker,
-  Popup,
-  Progress,
-  Radio,
-  SearchBar,
-  Slider,
-  Spinner,
-  Swipe,
-  SwipeItem,
-  Switch,
-  Tab,
-  Tabbar,
-  TabbarItem,
-  Tabs,
-  Textarea
-];
+var install = function install(Vue) {
+  var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-const install = (Vue, config = {}) => {
-  components.forEach(Component => {
+  components.forEach(function (Component) {
     Vue.use(Component);
   });
 
   Vue.use(InfiniteScroll);
-  Vue.use(Lazyload, {
+  Vue.use(Lazyload, _extends({
     loading: require('./assets/loading-spin.svg'),
-    attempt: 3,
-    ...config.lazyload
-  });
+    attempt: 3
+  }, config.lazyload));
 
   Vue.$dialog = Vue.prototype.$dialog = Dialog;
   Vue.$toast = Vue.prototype.$toast = Toast;
@@ -152,8 +113,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 var index = {
-  install,
-  version
+  install: install,
+  version: version
 };
 
 export default index;

@@ -1,6 +1,8 @@
 import vue from 'rollup-plugin-vue'
 import resolve from 'rollup-plugin-node-resolve'
 import css from 'rollup-plugin-css-only'
+import babel from 'rollup-plugin-babel'
+import buble from 'rollup-plugin-buble'
 import path from 'path'
 import fs from 'fs'
 
@@ -24,13 +26,19 @@ export default {
     file: 'haha.js'
   },
   external: [
-    'vue',
-    ...externals
+    ...externals,
+    'vue'
   ],
   plugins: [
     css(),
     vue({
       css: false
+    }),
+    babel({
+      runtimeHelpers: true
+    }),
+    buble({
+      objectAssign: 'Object.assign'
     }),
     resolve({
       extensions: ['.js', '.vue'],
